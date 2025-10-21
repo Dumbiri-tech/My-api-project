@@ -8,19 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Start Express server
-        run: |
-          npm start &
-          sleep 10
-
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
@@ -30,5 +17,4 @@ jobs:
 
       - name: Run API tests
         run: |
-          postman collection run "45940214-0f03e6bd-a018-41c5-8112-5018c2b02779" \
-            --env-var base_url=http://localhost:5000
+          postman collection run "45940214-0f03e6bd-a018-41c5-8112-5018c2b02779"
